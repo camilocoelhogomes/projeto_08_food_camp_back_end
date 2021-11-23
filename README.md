@@ -39,6 +39,8 @@ Demais erros não mapeados
 
 ### /sign-in
 
+#### POST para o rota <strong>/sign-up</strong>
+
 Deve ser enviado um Json para o rota <strong>/sign-in</strong> com o seguinte formato:
 
 {
@@ -66,3 +68,21 @@ Qualquer erro de conflito e inexistencia de e-mail retorna 401
 ##### 500
 
 Demais erros não mapeados
+
+### /owner-auth/:restaurant
+
+#### GET para o rota <strong>/owner-auth/:restaurant</strong>
+
+Para autenticar um dono de restaurante, deve ser enviado um Bearer token, com o token recebido quando o dono do restaurante fez o login, junto com a url do restaurante que ele pretende acessar nos parametros da requisição.
+
+A autenticação dessa rota é a mesma para quando for editar e inserir itens no cardapio
+
+#### Respostas
+
+##### 200
+
+Caso o acesso seja validado
+
+##### 401
+
+Quando o acesso não for validado
