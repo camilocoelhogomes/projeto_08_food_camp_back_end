@@ -9,7 +9,6 @@ const signIn = async (req, res) => {
   if (validateError) return res.sendStatus(401);
   try {
     const dbUser = await signInFactory(user);
-    console.log(dbUser);
     if (!bcrypt.compareSync(user.restaurantPassword, dbUser.rows[0].password)) {
       return res.sendStatus(401);
     }
@@ -22,7 +21,6 @@ const signIn = async (req, res) => {
     };
     return res.status(200).send(userObject);
   } catch (error) {
-    console.log(error);
     return res.status(500).send(error);
   }
 };
