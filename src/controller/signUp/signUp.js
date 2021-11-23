@@ -13,7 +13,6 @@ const signUp = async (req, res) => {
     return res.status(201).send();
   } catch (error) {
     if (error.code === '23505') return res.status(409).send(error);
-    console.log(error);
     return res.status(500).send(error);
   }
 };
