@@ -43,11 +43,13 @@ Demais erros não mapeados
 
 Deve ser enviado um Json para o rota <strong>/sign-in</strong> com o seguinte formato:
 
+```
 {
 <br><strong>"restaurantEmail"</strong>: "E-mail de contato do restaurante cadastrado",
 <br><strong>"restaurantPassword"</strong>: "Senha correta do restaurante",
 <br>
 }
+```
 
 #### Respostas
 
@@ -55,11 +57,13 @@ Deve ser enviado um Json para o rota <strong>/sign-in</strong> com o seguinte fo
 
 Caso seja efetuado o login com com sucesso será retornado um objeto no formato:
 
+```
 {
 <br><strong>"url"</strong>: "url para a busca do restaurante",
 <br><strong>"userToken"</strong>: "token de validação do restaurante"
 <br>
 }
+```
 
 ##### 401
 
