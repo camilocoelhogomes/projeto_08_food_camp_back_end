@@ -6,10 +6,10 @@ const signUp = async (req, res) => {
     const newRestaurant = req.body;
     const reqError = restaurantValidates.validateSignUp(newRestaurant);
     if (reqError) return res.sendStatus(400);
-    await restaurantService.createRestaurant({ ...newRestaurant });
+    const restaurant = await restaurantService.createRestaurant({ ...newRestaurant });
+    if (!restaurant) return res.sendStatus(409);
     return res.status(201).send();
   } catch (error) {
-    console.log(error);
     return res.sendStatus(500);
   }
 };

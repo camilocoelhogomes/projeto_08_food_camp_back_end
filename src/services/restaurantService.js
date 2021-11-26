@@ -18,7 +18,7 @@ const createRestaurant = async ({
     restaurantImg,
     restaurantEmail,
   });
-  return newRestaurant.rowCount;
+  return newRestaurant;
 };
 
 const restaurantService = {

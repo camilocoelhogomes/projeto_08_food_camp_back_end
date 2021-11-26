@@ -27,6 +27,17 @@ describe('POST /sign-up', () => {
     expect(finalRestaurants.rowCount - initialRestaurants.rowCount).toEqual(1);
   });
 
+  it('returns 409 for repeted email ok', async () => {
+    const initialRestaurants = await connection.query('SELECT * FROM restaurants;');
+    const result = await supertest(app)
+      .post('/sign-up')
+      .send(newRestaurant);
+    const finalRestaurants = await connection.query('SELECT * FROM restaurants;');
+
+    expect(result.status).toEqual(409);
+    expect(finalRestaurants.rowCount - initialRestaurants.rowCount).toEqual(0);
+  });
+
   it('returns 400 for invalid bodyes', async () => {
     const initialRestaurants = await connection.query('SELECT * FROM restaurants;');
     const result = await supertest(app)
