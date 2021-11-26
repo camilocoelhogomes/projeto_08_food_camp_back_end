@@ -16,7 +16,14 @@ afterAll(async () => {
 describe('POST /sign-in', () => {
   const restaurant = restaurantFactory.createFakeRestaurant();
   it('return 200 for valid signIn', async () => {
-    const result = await supertest(app).post('/sign-in').send(restaurant);
+    const result = await supertest(app)
+      .post('/sign-in')
+      .send(
+        {
+          restaurantEmail: (await restaurant).restaurantEmail,
+          restaurantPassword: (await restaurant).restaurantPassword,
+        },
+      );
 
     expect(result.status).toEqual(200);
     expect(result.body).toHaveProperty('userToken');

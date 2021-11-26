@@ -1,6 +1,7 @@
 import faker from 'faker';
 import RandExp from 'randexp';
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 import restaurantRepository from '../../src/repositories/restaurantRepository';
 
 const signUpRestaurant = () => {
@@ -15,9 +16,9 @@ const signUpRestaurant = () => {
   return { ...restaurant, restaurantConfirmPassword: restaurant.restaurantPassword };
 };
 
-const createFakeRestaurant = () => {
+const createFakeRestaurant = async () => {
   const restaurant = signUpRestaurant();
-  restaurantRepository
+  const restaurantDb = await restaurantRepository
     .createRestaurant(
       {
         ...restaurant,
@@ -27,6 +28,8 @@ const createFakeRestaurant = () => {
   return {
     restaurantEmail: restaurant.restaurantEmail,
     restaurantPassword: restaurant.restaurantPassword,
+    token: jwt.sign({ id: restaurantDb.id, url: restaurantDb.url_name }, process.env.JWT_SECRET),
+    url: restaurantDb.url_name,
   };
 };
 
