@@ -16,7 +16,30 @@ const signUp = async (req, res) => {
 
 const signIn = async (req, res) => {
   try {
-    return res.sendStatus(200);
+    const restaurant = req.body;
+    const reqError = restaurantValidates.validateSignIn(restaurant);
+
+    if (reqError) {
+      return res.sendStatus(401);
+    }
+
+    const restaurantDb = await restaurantService
+      .validateRestaurant(
+        {
+          email: restaurant.restaurantEmail,
+          password: restaurant.restaurantPassword,
+        },
+      );
+
+    if (!restaurantDb.token) {
+      return res.sendStatus(401);
+    }
+
+    return res
+      .status(200)
+      .send({
+        token: restaurantDb.token,
+      });
   } catch (error) {
     return res.sendStatus(500);
   }

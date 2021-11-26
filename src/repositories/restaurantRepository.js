@@ -31,8 +31,27 @@ const createRestaurant = async ({
   }
 };
 
+const getRestaurantByEmail = async ({
+  email,
+}) => {
+  try {
+    const selectedRestaurant = await connection.query(`
+  SELECT * from
+    restaurants
+  WHERE
+    restaurants.email = ($1);
+  `, [email]);
+
+    if (!selectedRestaurant.rowCount) { return null; }
+    return selectedRestaurant.rows[0];
+  } catch (error) {
+    return null;
+  }
+};
+
 const restaurantRepository = {
   createRestaurant,
+  getRestaurantByEmail,
 };
 
 export default restaurantRepository;

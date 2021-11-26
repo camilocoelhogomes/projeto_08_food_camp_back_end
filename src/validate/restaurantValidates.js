@@ -10,7 +10,13 @@ const validateSignUp = (signUpObject) => Joi.object({
   restaurantWppNumber: Joi.string().required().pattern(/^[0-9]{11}$/i),
 }).validate(signUpObject).error;
 
+const validateSignIn = (signInObject) => Joi.object({
+  restaurantEmail: Joi.string().email().required(),
+  restaurantPassword: Joi.string().required().pattern(/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})/),
+}).validate(signInObject).error;
+
 const restaurantValidates = {
   validateSignUp,
+  validateSignIn,
 };
 export default restaurantValidates;
