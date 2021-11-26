@@ -1,5 +1,7 @@
 import faker from 'faker';
 import RandExp from 'randexp';
+import bcrypt from 'bcrypt';
+import restaurantRepository from '../../src/repositories/restaurantRepository';
 
 const signUpRestaurant = () => {
   const restaurant = {
@@ -13,7 +15,23 @@ const signUpRestaurant = () => {
   return { ...restaurant, restaurantConfirmPassword: restaurant.restaurantPassword };
 };
 
+const createFakeRestaurant = () => {
+  const restaurant = signUpRestaurant();
+  restaurantRepository
+    .createRestaurant(
+      {
+        ...restaurant,
+        restaurantPassword: bcrypt.hashSync(restaurant.restaurantPassword, 10),
+      },
+    );
+  return {
+    restaurantEmail: restaurant.restaurantEmail,
+    restaurantPassword: restaurant.restaurantPassword,
+  };
+};
+
 const restaurantFactory = {
   signUpRestaurant,
+  createFakeRestaurant,
 };
 export default restaurantFactory;

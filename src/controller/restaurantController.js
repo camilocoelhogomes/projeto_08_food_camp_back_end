@@ -14,8 +14,17 @@ const signUp = async (req, res) => {
   }
 };
 
+const signIn = async (req, res) => {
+  try {
+    return res.sendStatus(200);
+  } catch (error) {
+    return res.sendStatus(500);
+  }
+};
+
 const restaurantController = {
   signUp,
+  signIn,
 };
 
 export default restaurantController;

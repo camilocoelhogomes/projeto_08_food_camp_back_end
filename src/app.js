@@ -9,4 +9,5 @@ app.use(express.json());
 app.get('/is-live', (req, res) => res.status(200).send('Ok'));
 
 app.post('/sign-up', restaurantController.signUp);
+app.post('/sign-in', restaurantController.signIn);
 export default app;
