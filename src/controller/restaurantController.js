@@ -31,15 +31,13 @@ const signIn = async (req, res) => {
         },
       );
 
-    if (!restaurantDb.token) {
+    if (!restaurantDb.data) {
       return res.sendStatus(401);
     }
 
     return res
       .status(200)
-      .send({
-        token: restaurantDb.token,
-      });
+      .send({ ...restaurantDb.data });
   } catch (error) {
     return res.sendStatus(500);
   }

@@ -27,20 +27,23 @@ const validateRestaurant = async ({ email, password }) => {
   if (!restaurant) {
     return {
       message: 'Unathorized',
-      token: null,
+      data: null,
     };
   }
 
   if (!bcrypt.compareSync(password, restaurant.password)) {
     return {
       message: 'Unathorized',
-      token: null,
+      data: null,
     };
   }
 
   return {
     message: 'Authorized',
-    token: jwt.sign({ id: restaurant.id, url: restaurant.url_name }, process.env.JWT_SECRET),
+    data: {
+      userToken: jwt.sign({ id: restaurant.id, url: restaurant.url_name }, process.env.JWT_SECRET),
+      url: restaurant.url_name,
+    },
   };
 };
 

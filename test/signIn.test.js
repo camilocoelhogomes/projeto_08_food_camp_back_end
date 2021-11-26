@@ -19,7 +19,8 @@ describe('POST /sign-in', () => {
     const result = await supertest(app).post('/sign-in').send(restaurant);
 
     expect(result.status).toEqual(200);
-    expect(result.body).toHaveProperty('token');
+    expect(result.body).toHaveProperty('userToken');
+    expect(result.body).toHaveProperty('url');
   });
 
   it('return 401 for invalid password', async () => {
