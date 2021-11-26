@@ -1,6 +1,6 @@
-DROP DATABASE projeto_08_dev;
-CREATE DATABASE projeto_08_dev;
-\c projeto_08_dev;
+DROP DATABASE projeto_08_test;
+CREATE DATABASE projeto_08_test;
+\c projeto_08_test;
 
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
