@@ -7,7 +7,7 @@ const restaurantAuth = (req, res, next) => {
     req.localData = {
       id: null,
     };
-    return next();
+    return res.sendStatus(401);
   }
   const decryptedRestaurant = jwt.verify(restaurantToken, process.env.JWT_SECRET);
 
@@ -15,7 +15,7 @@ const restaurantAuth = (req, res, next) => {
     req.localData = {
       id: null,
     };
-    return next();
+    return res.sendStatus(401);
   }
   req.localData = {
     id: decryptedRestaurant.id,

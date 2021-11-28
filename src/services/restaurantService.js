@@ -48,9 +48,27 @@ const validateRestaurant = async ({ email, password }) => {
   };
 };
 
+const createRestaurantObject = async ({ url }) => {
+  const restaurant = await restaurantRepository.getRestaurantCategoriesByUrl({ url });
+  const restaurantObject = {
+    restaurantName: restaurant[0].restaurantName,
+    restaurantUrlName: restaurant[0].restaurantUrlName,
+    restaurantWppNumber: restaurant[0].restaurantWppNumber,
+    restaurantImg: restaurant[0].restaurantImg,
+    categories: restaurant.map((item) => (
+      {
+        categorieId: item.categorieId,
+        categorieName: item.categorieName,
+        categorieItens: [],
+      })),
+  };
+  return restaurantObject;
+};
+
 const restaurantService = {
   createRestaurant,
   validateRestaurant,
+  createRestaurantObject,
 };
 
 export default restaurantService;

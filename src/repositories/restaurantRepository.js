@@ -49,9 +49,37 @@ const getRestaurantByEmail = async ({
   }
 };
 
+const getRestaurantCategoriesByUrl = async ({ url }) => {
+  try {
+    const selectedRestaurant = await connection.query(`
+    SELECT
+      restaurants."name" AS "restaurantName",
+      restaurants."url_name" AS "restaurantUrlName",
+      restaurants."wpp_number" AS "restaurantWppNumber",
+      restaurants."restaurant_img" AS "restaurantImg",
+      categories."id" AS "categorieId",
+      categories."categorie_name" AS "categorieName"
+    FROM
+      restaurants
+    JOIN
+      categories
+    ON
+      restaurants."id" = categories."restaurant_id"
+    WHERE
+      restaurants."url_name" = ($1);
+    `, [url]);
+    if (!selectedRestaurant.rowCount) { return null; }
+    return selectedRestaurant.rows;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
+
 const restaurantRepository = {
   createRestaurant,
   getRestaurantByEmail,
+  getRestaurantCategoriesByUrl,
 };
 
 export default restaurantRepository;
