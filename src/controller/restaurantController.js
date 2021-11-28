@@ -57,10 +57,22 @@ const authOwnerVerify = async (req, res) => {
   return res.sendStatus(200);
 };
 
+const getRestaurantByUrl = async (req, res) => {
+  try {
+    const { restaurantUrl } = req.params;
+    const restaurant = await restaurantService.createRestaurantObject({ url: restaurantUrl });
+    return res.status(200).send(restaurant);
+  } catch (error) {
+    console.log(error);
+    return res.sendStatus(404);
+  }
+};
+
 const restaurantController = {
   signUp,
   signIn,
   authOwnerVerify,
+  getRestaurantByUrl,
 };
 
 export default restaurantController;
