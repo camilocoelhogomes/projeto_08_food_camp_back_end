@@ -4,6 +4,7 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import restaurantRepository from '../../src/repositories/restaurantRepository';
 import categorieRepository from '../../src/repositories/categorieRepository';
+import menuItemRepositories from '../../src/repositories/menuItemRepositories';
 
 const signUpRestaurant = () => {
   const restaurant = {
@@ -30,12 +31,23 @@ const createFakeRestaurant = async () => {
     categorieName: faker.company.companyName(),
     restaurantId: restaurantDb.id,
   });
+
+  const menuItem = await menuItemRepositories.createMenuItem({
+    categorieId: categorie[0].id,
+    productImg: faker.image.imageUrl(),
+    productName: faker.name.firstName(),
+    productDescription: faker.name.findName(),
+    productPrice: faker.commerce.price(),
+    productNumber: (Math.random() * 100).toFixed(0),
+  });
+
   return {
     restaurantEmail: restaurant.restaurantEmail,
     restaurantPassword: restaurant.restaurantPassword,
     token: jwt.sign({ id: restaurantDb.id, url: restaurantDb.url_name }, process.env.JWT_SECRET),
     url: restaurantDb.url_name,
     cateorieId: categorie[0].id,
+    productId: menuItem[0].id,
   };
 };
 
