@@ -89,3 +89,32 @@ Caso o acesso seja validado
 ##### 401
 
 Quando o acesso não for validado
+
+### /:restaurant/categorie
+
+#### POST para a rota /:restaurant/categorie
+
+Para criar uma nova categoria deve-se enviar uma requisição do tipo post para o rota a cima, contendo um Bearer token de identificação do proprietário do restaurant.
+
+#### Respostas
+
+### status code 201
+
+Quando criado com sucesso deverá receber um novo objeto de restaurant no formato
+
+```
+{
+  restaurantName: ,
+  restaurantUrlName: ,
+  restaurantWppNumber: ,
+  restaurantImg: ,
+  categories: [
+    {
+      categorieId: ,
+      categorieName: ,
+      categorieItens: []
+    }
+  ]
+}
+
+```
