@@ -27,6 +27,7 @@ const createFakeRestaurant = async () => {
         restaurantPassword: bcrypt.hashSync(restaurant.restaurantPassword, 10),
       },
     );
+
   const categorie = await categorieRepository.createCategorie({
     categorieName: faker.company.companyName(),
     restaurantId: restaurantDb.id,
