@@ -71,7 +71,6 @@ const getRestaurantCategoriesByUrl = async ({ url }) => {
     if (!selectedRestaurant.rowCount) { return null; }
     return selectedRestaurant.rows;
   } catch (error) {
-    console.log(error);
     return null;
   }
 };

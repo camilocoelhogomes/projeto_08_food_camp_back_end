@@ -14,10 +14,8 @@ const postCategorie = async (req, res) => {
       res.sendStatus(500);
     }
     const restaurantObject = await restaurantService.createRestaurantObject({ url: restaurantUrl });
-    console.log(restaurantObject);
     res.status(201).send(restaurantObject);
   } catch (error) {
-    console.log(error);
     res.sendStatus(500);
   }
 };
