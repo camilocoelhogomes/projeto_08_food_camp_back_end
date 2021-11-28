@@ -6,6 +6,50 @@ O foodcamp é um projeto de web app para cardapios de restaurantes, o back-end d
 
 ## Rotas
 
+### /:restaurantUrl
+
+#### GET
+
+Quando efetuado um get para a rota <strong>/:restaurantUrl</strong> pode-se esperar duas possíveis respostas
+
+#### Respostas
+
+##### 200
+
+A requisição ocorreu tudo bem e um objeto no formato
+
+```
+{
+  restaurantName: ,
+  restaurantUrlName: ,
+  restaurantWppNumber: ,
+  restaurantImg: ,
+  categories: [
+    {
+      categorieId: ,
+      categorieName: ,
+      categorieItens: [
+        {
+          productId: ,
+          productImg: ,
+          productName: ,
+          productPrice: ,
+          productDescription: ,
+          productNumber: ,
+        }
+        .
+        .
+        .
+      ]
+      .
+      .
+      .
+    }
+  ]
+}
+
+```
+
 ### /sign-up
 
 #### POST para o rota <strong>/sign-up</strong>
@@ -100,21 +144,14 @@ Para criar uma nova categoria deve-se enviar uma requisição do tipo post para 
 
 ### status code 201
 
-Quando criado com sucesso deverá receber um novo objeto de restaurant no formato
+Quando criado com sucesso deverá receber um novo objeto de restaurant no formato o mesmo objeto retornado quando das informçaões de quando efetua um get para a rota do <stong>/restuarantUrl</strong> com os dados atualizado
 
-```
-{
-  restaurantName: ,
-  restaurantUrlName: ,
-  restaurantWppNumber: ,
-  restaurantImg: ,
-  categories: [
-    {
-      categorieId: ,
-      categorieName: ,
-      categorieItens: []
-    }
-  ]
-}
+#### POST para a rota /:restaurant/menu-item
 
-```
+Para criar uma nova categoria deve-se enviar uma requisição do tipo post para o rota a cima, contendo um Bearer token de identificação do proprietário do restaurant.
+
+#### Respostas
+
+### status code 201
+
+Quando criado com sucesso deverá receber um novo objeto de restaurant no formato o mesmo objeto retornado quando das informçaões de quando efetua um get para a rota do <stong>/restuarantUrl</strong> com os dados atualizado
