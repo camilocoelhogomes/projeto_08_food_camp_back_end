@@ -5,9 +5,10 @@ import connection from '../src/dbConfig.js';
 import '../src/setup.js';
 import restaurantFactory from './factory/restaurantFactory.js';
 
+// eslint-disable-next-line jest/valid-describe-callback
 describe('POST /:restaurantUrl/categorie', () => {
-  const restaurant = restaurantFactory.createFakeRestaurant();
   it('201 for created categorie', async () => {
+    const restaurant = await restaurantFactory.createFakeRestaurant();
     const initialCategories = await connection.query('SELECT * FROM categories;');
     const result = await supertest(app)
       .post(`/${(await restaurant).url}/categorie`)
