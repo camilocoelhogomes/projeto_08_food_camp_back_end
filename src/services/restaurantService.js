@@ -49,6 +49,7 @@ const validateRestaurant = async ({ email, password }) => {
 };
 
 const createRestaurantObject = async ({ url }) => {
+  const products = await restaurantRepository.getRestaurantProductsByUrl({ url });
   const restaurant = await restaurantRepository.getRestaurantCategoriesByUrl({ url });
   const restaurantObject = {
     restaurantName: restaurant[0].restaurantName,
@@ -59,7 +60,16 @@ const createRestaurantObject = async ({ url }) => {
       {
         categorieId: item.categorieId,
         categorieName: item.categorieName,
-        categorieItens: [],
+        categorieItens: products
+          .filter((product) => product.categorieId === item.categorieId)
+          .map((product) => ({
+            productId: product.productId,
+            productImg: product.productImg,
+            productName: product.productName,
+            productPrice: product.productPrice,
+            productDescription: product.productDescription,
+            productNumber: product.productNumber,
+          })),
       })),
   };
   return restaurantObject;

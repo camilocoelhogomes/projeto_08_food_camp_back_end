@@ -6,11 +6,12 @@ const postCategorie = async (req, res) => {
   if (!req.localData.id) {
     return res.sendStatus(401);
   }
+
   try {
     const newCategorie = await categorieService.createCategorie(
       {
         restaurantId: req.localData.id,
-        categorieName: req.body.categorie,
+        categorieName: req.body.categorieName,
       },
     );
     if (!newCategorie) {

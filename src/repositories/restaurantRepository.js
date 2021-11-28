@@ -75,10 +75,48 @@ const getRestaurantCategoriesByUrl = async ({ url }) => {
   }
 };
 
+const getRestaurantProductsByUrl = async ({ url }) => {
+  try {
+    const selectedRestaurant = await connection.query(`
+    SELECT
+      restaurants."name" AS "restaurantName",
+      restaurants."url_name" AS "restaurantUrlName",
+      restaurants."wpp_number" AS "restaurantWppNumber",
+      restaurants."restaurant_img" AS "restaurantImg",
+      categories."id" AS "categorieId",
+      categories."categorie_name" AS "categorieName",
+      product."id" AS "productId",
+      product."product_img" AS "productImg",
+      product."product_name" AS "productName",
+      product."product_price" AS "productPrice",
+      product."product_description" AS "productDescription",
+      product."product_number" AS "productNumber"
+    FROM
+      restaurants
+    JOIN
+      categories
+    ON
+      restaurants."id" = categories."restaurant_id"
+    JOIN
+      product
+    ON
+      product."categorie_id" = categories."id"
+    WHERE
+      restaurants."url_name" = ($1);
+    `, [url]);
+    if (!selectedRestaurant.rowCount) { return null; }
+    return selectedRestaurant.rows;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
+
 const restaurantRepository = {
   createRestaurant,
   getRestaurantByEmail,
   getRestaurantCategoriesByUrl,
+  getRestaurantProductsByUrl,
 };
 
 export default restaurantRepository;
