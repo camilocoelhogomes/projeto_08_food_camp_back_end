@@ -14,7 +14,7 @@ describe('POST /:restaurantUrl/categorie', () => {
       .post(`/${(await restaurant).url}/categorie`)
       .set('Authorization', `Bearer ${(await restaurant).token}`)
       .send({
-        categorie: faker.name.firstName(),
+        categorieName: faker.name.firstName(),
       });
     const finalCategories = await connection.query('SELECT * FROM categories;');
 

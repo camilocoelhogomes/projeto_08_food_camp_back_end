@@ -36,7 +36,7 @@ CREATE TABLE "product" (
 	"product_img" varchar(255) NOT NULL,
 	"product_name" varchar(255) NOT NULL,
 	"product_description" varchar(255) NOT NULL,
-	"product_price" money NOT NULL,
+	"product_price" NUMERIC(100,2) NOT NULL,
 	"product_number" integer NOT NULL
 ) WITH (
   OIDS=FALSE
