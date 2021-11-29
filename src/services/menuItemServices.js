@@ -1,4 +1,4 @@
-import menuItemRepositories from '../repositories/menuItemRepositories';
+import menuItemRepositories from '../repositories/menuItemRepositories.js';
 
 const createMenuItem = async ({
   categorieId,

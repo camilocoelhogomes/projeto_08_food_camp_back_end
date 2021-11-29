@@ -1,4 +1,4 @@
-import categorieRepository from '../repositories/categorieRepository';
+import categorieRepository from '../repositories/categorieRepository.js';
 
 const createCategorie = async ({ restaurantId, categorieName }) => {
   const newCategorie = await categorieRepository.createCategorie({ restaurantId, categorieName });

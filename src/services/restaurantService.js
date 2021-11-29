@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import restaurantRepository from '../repositories/restaurantRepository';
+import restaurantRepository from '../repositories/restaurantRepository.js';
 
 const createRestaurant = async ({
   restaurantName,

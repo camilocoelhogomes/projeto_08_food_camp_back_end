@@ -1,5 +1,5 @@
-import menuItemServices from '../services/menuItemServices';
-import restaurantService from '../services/restaurantService';
+import menuItemServices from '../services/menuItemServices.js';
+import restaurantService from '../services/restaurantService.js';
 
 const postMenuItem = async (req, res) => {
   const {

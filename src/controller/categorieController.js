@@ -1,5 +1,5 @@
-import categorieService from '../services/categorieService';
-import restaurantService from '../services/restaurantService';
+import categorieService from '../services/categorieService.js';
+import restaurantService from '../services/restaurantService.js';
 
 const postCategorie = async (req, res) => {
   const { restaurantUrl } = req.params;

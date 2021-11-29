@@ -18,7 +18,6 @@ app.get('/owner-auth', (req, res) => res.sendStatus(401));
 app.get('/:restaurantUrl', restaurantController.getRestaurantByUrl);
 app.get('/owner-auth/:restaurantUrl', restaurantAuth, restaurantController.authOwnerVerify);
 app.post('/:restaurantUrl/categorie', restaurantAuth, categorieController.postCategorie);
-app.put('/:restaurantUrl/categorie', restaurantAuth, categorieController.putCategorie);
 
 app.post('/:restaurantUrl/menu-item', menuItemController.postMenuItem);
 
