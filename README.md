@@ -4,7 +4,7 @@
 
 <a href='https://food-camp-cardapio.herokuapp.com/'>https://food-camp-cardapio.herokuapp.com/</a>
 
-Para checar se a api está no ar, faça uma requisição para a <a href='https://food-camp-cardapio.herokuapp.com/is-live'>rota <strong>/is-live</strong> </a>
+Para checar se a api está no ar, faça uma requisição para a <strong> <a href='https://food-camp-cardapio.herokuapp.com/is-live'>rota /is-live</strong> </a>
 
 ## Sobre
 
