@@ -46,7 +46,7 @@ const signIn = async (req, res) => {
       .status(200)
       .send({ ...restaurantDb.data });
   } catch (error) {
-    return res.sendStatus(500);
+    return res.status(500).send(error);
   }
 };
 
