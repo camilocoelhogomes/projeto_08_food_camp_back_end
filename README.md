@@ -4,6 +4,8 @@
 
 <a href='https://food-camp-cardapio.herokuapp.com/'>https://food-camp-cardapio.herokuapp.com/</a>
 
+Para checar se a api está no ar, faça uma requisição para a rota <strong>/is-live</strong>
+
 ## Sobre
 
 O foodcamp é um projeto de web app para cardapios de restaurantes, o back-end do mesmo cnosiste em um local para armazenar esses cardapios e o usuário poder acessar através de um client de web app, o proprietário do restaurante possa cadastrar mais itens e mais categorias de produtos em seu cardapio, como também alterar o preço de produtos
