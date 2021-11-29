@@ -27,6 +27,7 @@ const createRestaurant = async ({
 
     return newRestaurant.rows[0];
   } catch (error) {
+    console.log(error);
     return null;
   }
 };

@@ -24,7 +24,6 @@ const createRestaurant = async ({
 
 const validateRestaurant = async ({ email, password }) => {
   const restaurant = await restaurantRepository.getRestaurantByEmail({ email });
-
   if (!restaurant) {
     return {
       message: 'Unathorized',

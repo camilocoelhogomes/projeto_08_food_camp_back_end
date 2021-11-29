@@ -24,6 +24,7 @@ const signUp = async (req, res) => {
 const signIn = async (req, res) => {
   try {
     const restaurant = req.body;
+    console.log(req.body);
     const reqError = restaurantValidates.validateSignIn(restaurant);
 
     if (reqError) {
@@ -41,7 +42,6 @@ const signIn = async (req, res) => {
     if (!restaurantDb.data) {
       return res.sendStatus(401);
     }
-
     return res
       .status(200)
       .send({ ...restaurantDb.data });
