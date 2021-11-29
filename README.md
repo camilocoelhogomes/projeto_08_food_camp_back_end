@@ -36,15 +36,15 @@ A requisição ocorreu tudo bem e um objeto no formato
           productPrice: ,
           productDescription: ,
           productNumber: ,
-        }
+        },
         .
         .
         .
       ]
-      .
-      .
-      .
-    }
+    },
+    .
+    .
+    .
   ]
 }
 
