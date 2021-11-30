@@ -23,7 +23,9 @@ const createRestaurant = async ({
 };
 
 const validateRestaurant = async ({ email, password }) => {
+  console.log('oi');
   const restaurant = await restaurantRepository.getRestaurantByEmail({ email });
+  console.log(restaurant);
   if (!restaurant) {
     return {
       message: 'Unathorized',

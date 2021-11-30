@@ -27,8 +27,7 @@ const createRestaurant = async ({
 
     return newRestaurant.rows[0];
   } catch (error) {
-    console.log(error);
-    return null;
+    return error;
   }
 };
 
@@ -46,7 +45,7 @@ const getRestaurantByEmail = async ({
     if (!selectedRestaurant.rowCount) { return null; }
     return selectedRestaurant.rows[0];
   } catch (error) {
-    return null;
+    return error;
   }
 };
 
