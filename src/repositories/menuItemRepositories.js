@@ -27,7 +27,6 @@ const createMenuItem = async ({
     }
     return newMenuItem.rows;
   } catch (error) {
-    console.log(error);
     return null;
   }
 };

@@ -44,7 +44,6 @@ const signIn = async (req, res) => {
       .status(200)
       .send({ ...restaurantDb.data });
   } catch (error) {
-    console.log(error);
     return res.sendStatus(500);
   }
 };
@@ -62,7 +61,6 @@ const getRestaurantByUrl = async (req, res) => {
     const restaurant = await restaurantService.createRestaurantObject({ url: restaurantUrl });
     return res.status(200).send(restaurant);
   } catch (error) {
-    console.log(error);
     return res.sendStatus(404);
   }
 };
