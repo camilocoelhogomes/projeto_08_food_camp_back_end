@@ -10,10 +10,10 @@ const createCategorie = async ({ categorieName, restaurantId }) => {
       RETURNING
       *
     `, [categorieName, restaurantId]);
-    if (newCategorie.rowCount) {
-      return newCategorie.rows;
+    if (!newCategorie.rowCount) {
+      return null;
     }
-    return null;
+    return newCategorie.rows;
   } catch (error) {
     return null;
   }

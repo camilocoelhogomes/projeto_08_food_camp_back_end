@@ -104,7 +104,7 @@ const getRestaurantProductsByUrl = async ({ url }) => {
     WHERE
       restaurants."url_name" = ($1);
     `, [url]);
-    if (!selectedRestaurant.rowCount) { return null; }
+    if (!selectedRestaurant.rowCount) { return []; }
     return selectedRestaurant.rows;
   } catch (error) {
     return null;
