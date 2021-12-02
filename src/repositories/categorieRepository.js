@@ -10,10 +10,31 @@ const createCategorie = async ({ categorieName, restaurantId }) => {
       RETURNING
       *
     `, [categorieName, restaurantId]);
-    if (newCategorie.rowCount) {
-      return newCategorie.rows;
+    if (!newCategorie.rowCount) {
+      return null;
     }
+    return newCategorie.rows;
+  } catch (error) {
     return null;
+  }
+};
+
+const updateCategorie = async ({ restaurantId, categorieId, categorieName }) => {
+  try {
+    const updatedCategorie = await connection.query(`
+    UPDATE
+      categories
+    SET
+      categorie_name = ($3)
+    WHERE
+      restaurant_id = ($1)
+    AND
+      id = ($2)
+    RETURNING
+      *  
+    ;
+    `, [restaurantId, categorieId, categorieName]);
+    return updatedCategorie.rows;
   } catch (error) {
     return null;
   }
@@ -21,6 +42,7 @@ const createCategorie = async ({ categorieName, restaurantId }) => {
 
 const categorieRepository = {
   createCategorie,
+  updateCategorie,
 };
 
 export default categorieRepository;

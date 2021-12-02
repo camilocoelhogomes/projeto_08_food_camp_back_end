@@ -102,9 +102,11 @@ const getRestaurantProductsByUrl = async ({ url }) => {
     ON
       product."categorie_id" = categories."id"
     WHERE
-      restaurants."url_name" = ($1);
+      restaurants."url_name" = ($1)
+    ORDER BY
+      product."product_number" ASC;
     `, [url]);
-    if (!selectedRestaurant.rowCount) { return null; }
+    if (!selectedRestaurant.rowCount) { return []; }
     return selectedRestaurant.rows;
   } catch (error) {
     return null;

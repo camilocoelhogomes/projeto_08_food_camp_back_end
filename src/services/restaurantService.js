@@ -42,6 +42,9 @@ const validateRestaurant = async ({ email, password }) => {
     data: {
       userToken: jwt.sign({ id: restaurant.id, url: restaurant.url_name }, process.env.JWT_SECRET),
       url: restaurant.url_name,
+      restaurantName: restaurant.name,
+      restaurantWppNumber: restaurant.wpp_number,
+      restaurantImg: restaurant.restaurant_img,
     },
   };
 };

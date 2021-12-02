@@ -6,14 +6,23 @@ const postCategorie = async (req, res) => {
   if (!req.localData.id) {
     return res.sendStatus(401);
   }
-
   try {
-    const newCategorie = await categorieService.createCategorie(
-      {
-        restaurantId: req.localData.id,
+    console.log(req.body);
+    let newCategorie = null;
+    if (req.body.categorieId) {
+      newCategorie = await categorieService.updateCategorie({
+        categorieId: req.body.categorieId,
         categorieName: req.body.categorieName,
-      },
-    );
+        restaurantId: req.localData.id,
+      });
+    } else {
+      newCategorie = await categorieService.createCategorie(
+        {
+          restaurantId: req.localData.id,
+          categorieName: req.body.categorieName,
+        },
+      );
+    }
     if (!newCategorie) {
       res.sendStatus(500);
     }

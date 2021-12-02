@@ -10,7 +10,7 @@ const postMenuItem = async (req, res) => {
     productPrice,
     productNumber,
   } = req.body;
-
+  console.log(req.body);
   const { restaurantUrl } = req.params;
   try {
     const menuItem = await menuItemServices.createMenuItem({
