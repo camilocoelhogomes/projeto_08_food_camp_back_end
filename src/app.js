@@ -20,6 +20,7 @@ app.get('/owner-auth/:restaurantUrl', restaurantAuth, restaurantController.authO
 app.post('/:restaurantUrl/categorie', restaurantAuth, categorieController.postCategorie);
 app.post('/:restaurantUrl/categorie/delete', restaurantAuth, categorieController.deleteCategorie);
 
-app.post('/:restaurantUrl/menu-item', menuItemController.postMenuItem);
+app.post('/:restaurantUrl/menu-item', restaurantAuth, menuItemController.postMenuItem);
+app.post('/:restaurantUrl/menu-item/delete', restaurantAuth, menuItemController.deleteMenuItem);
 
 export default app;

@@ -52,6 +52,7 @@ const validateRestaurant = async ({ email, password }) => {
 const createRestaurantObject = async ({ url }) => {
   const products = await restaurantRepository.getRestaurantProductsByUrl({ url });
   const restaurant = await restaurantRepository.getRestaurantCategoriesByUrl({ url });
+  if (!restaurant) return {};
   const restaurantObject = {
     restaurantName: restaurant[0].restaurantName,
     restaurantUrlName: restaurant[0].restaurantUrlName,
