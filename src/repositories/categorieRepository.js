@@ -40,9 +40,29 @@ const updateCategorie = async ({ restaurantId, categorieId, categorieName }) => 
   }
 };
 
+const deleteCategorie = async ({ restaurantId, categorieId }) => {
+  try {
+    await connection.query(`
+    DELETE FROM 
+      categories
+    WHERE
+      restaurant_id = ($1)
+    AND
+      id = ($2)
+    RETURNING
+      *  
+    ;
+    `, [restaurantId, categorieId]);
+    return true;
+  } catch (error) {
+    return null;
+  }
+};
+
 const categorieRepository = {
   createCategorie,
   updateCategorie,
+  deleteCategorie,
 };
 
 export default categorieRepository;
