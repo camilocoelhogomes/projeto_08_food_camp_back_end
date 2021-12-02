@@ -9,8 +9,13 @@ const createCategorie = async ({ restaurantId, categorieName }) => {
   return true;
 };
 
-const updateCategorie = async ({ restaurantId, categorieId, newCategorieName }) => {
-  console.log({ restaurantId, categorieId, newCategorieName });
+const updateCategorie = async ({ restaurantId, categorieId, categorieName }) => {
+  const updatedCategorie = await categorieRepository.updateCategorie({
+    restaurantId,
+    categorieId,
+    categorieName,
+  });
+  return (updatedCategorie);
 };
 
 const categorieService = {
