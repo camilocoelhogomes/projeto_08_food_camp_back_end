@@ -7,7 +7,6 @@ const postCategorie = async (req, res) => {
     return res.sendStatus(401);
   }
   try {
-    console.log(req.body);
     let newCategorie = null;
     if (req.body.categorieId) {
       newCategorie = await categorieService.updateCategorie({
@@ -33,8 +32,24 @@ const postCategorie = async (req, res) => {
   }
 };
 
+const deleteCategorie = async (req, res) => {
+  const { restaurantUrl } = req.params;
+  if (!req.localData.id) {
+    return res.sendStatus(401);
+  }
+  await categorieService.deleteCategorie(
+    {
+      restaurantId: req.localData.id,
+      categorieId: req.body.categorieId,
+    },
+  );
+  const restaurantObject = await restaurantService.createRestaurantObject({ url: restaurantUrl });
+  return res.status(201).send(restaurantObject);
+};
+
 const categorieController = {
   postCategorie,
+  deleteCategorie,
 };
 
 export default categorieController;

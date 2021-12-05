@@ -18,9 +18,18 @@ const updateCategorie = async ({ restaurantId, categorieId, categorieName }) => 
   return (updatedCategorie);
 };
 
+const deleteCategorie = async ({ restaurantId, categorieId }) => {
+  const updatedCategorie = await categorieRepository.deleteCategorie({
+    restaurantId,
+    categorieId,
+  });
+  return (updatedCategorie);
+};
+
 const categorieService = {
   createCategorie,
   updateCategorie,
+  deleteCategorie,
 };
 
 export default categorieService;

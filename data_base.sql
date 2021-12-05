@@ -47,7 +47,4 @@ CREATE TABLE "product" (
 
 ALTER TABLE "categories" ADD CONSTRAINT "categories_fk0" FOREIGN KEY ("restaurant_id") REFERENCES "restaurants"("id");
 
-ALTER TABLE "product" ADD CONSTRAINT "product_fk0" FOREIGN KEY ("categorie_id") REFERENCES "categories"("id");
-
-
-
+ALTER TABLE "product" ADD CONSTRAINT "product_fk0" FOREIGN KEY ("categorie_id") REFERENCES "categories"("id") ON DELETE CASCADE;
